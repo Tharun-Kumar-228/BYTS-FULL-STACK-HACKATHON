@@ -5,14 +5,14 @@ import asyncio
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
-from energy_forecaster import predict_next_power       # use Person-3's model
+from energy_forecaster3 import predict_next_power       # use Person-3's model
 from rules import evaluate_rules
 
 
 # -------- CONFIG --------
 
 SIM_BASE_URL = "https://smart-home-simulator-7f9m.onrender.com/api"  # simulator base URL
-POLL_INTERVAL_SECONDS = 90
+POLL_INTERVAL_SECONDS = 30
 HISTORY_LIMIT = 200
 
 app = FastAPI()

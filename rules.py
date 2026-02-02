@@ -10,8 +10,8 @@ def evaluate_rules(
     sensors: List[Sensor],
     predicted_power_kw: float,
     current_mode: str,
-    max_power_kw: Optional[float],       # user-configured limit (can be None)
-    auto_max_power_kw: Optional[float],  # always-on safety limit (not used heavily now)
+    max_power_kw: Optional[float],        # user-configured limit (can be None)
+    auto_max_power_kw: Optional[float],   # always-on safety limit (not used heavily now)
 ) -> List[Dict[str, Any]]:
     """
     Evaluate rules and return a list of actions.
@@ -111,17 +111,15 @@ def evaluate_rules(
     # -----------------------------------------------------------------
     # RULE 2: Forecast-based safety (hysteresis on prediction)
     #
-    # Treat predicted_power_kw as a risk score:
-    #   - If above cut_threshold -> shed non-critical load
-    #   - If below restore_threshold -> restore some non-critical load
+    # With the new model, predicted_power_kw should be roughly real kW for
+    # whole-home consumption (e.g. 0.5–5 kW most of the time).
     #
-    # Extended to:
-    #   - Dim lights (not just on/off)
-    #   - Adjust AC temperature
-    #   - Use motion: more aggressive in inactive rooms
+    # Example thresholds:
+    #   - Above ~3.0 kW -> start shedding non-critical load.
+    #   - Below ~2.5 kW -> restore comfort.
     # -----------------------------------------------------------------
-    cut_threshold = 21.3
-    restore_threshold = 20.8
+    cut_threshold = 1.5
+    restore_threshold = 1.3
 
     # Prefer user limit for "reason" text if present, but logic is based on model scale
     if max_power_kw is not None:
@@ -320,7 +318,7 @@ def evaluate_rules(
     # -------------------------------------------------
     # RULE 4: Night mode baseline – lights off late night
     # -------------------------------------------------
-    if now.time() >= time(23, 0):  # 23:00 onwards
+    if now.time() >= time(23, 0):  # 23:00 onwards+
         for d in devices:
             if d.get("type") != "light":
                 continue

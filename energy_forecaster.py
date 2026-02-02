@@ -7,8 +7,8 @@ from datetime import datetime
 
 # Paths (relative to this file)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "models", "energy_forecast.pkl")
-CONFIG_PATH = os.path.join(BASE_DIR, "config", "forecast_config.json")
+MODEL_PATH = os.path.join(BASE_DIR, "models", "energy_forecast3.pkl")
+CONFIG_PATH = os.path.join(BASE_DIR, "config", "forecast_config3.json")
 
 # Global variables for model and config
 _MODEL = None
