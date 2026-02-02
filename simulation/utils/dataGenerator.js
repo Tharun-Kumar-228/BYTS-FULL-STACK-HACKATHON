@@ -2,44 +2,7 @@ const SensorData = require('../models/SensorData');
 const History = require('../models/History');
 const Device = require('../models/Device');
 
-const generateSensorData = async (userId, count = 10) => {
-  const now = new Date();
-  const sensorData = [];
 
-  // Generate realistic sensor readings around your sample values
-  for (let i = 0; i < count; i++) {
-    const timestamp = new Date(now.getTime() - i * 2 * 60 * 1000); // 2min intervals
-
-    sensorData.push(...[
-      // Power total (around 1.15kW like your sample)
-      {
-        userId,
-        id: 'sensor_power_total',
-        type: 'power_total',
-        room: 'House',
-        value: 1.15 + (Math.random() - 0.5) * 0.3,  // ~0.85-1.45kW
-        unit: 'kW',
-        timestamp_iso: timestamp
-      },
-      // Temperatures (around 28°C)
-      {
-        userId,
-        id: 'sensor_temp_living',
-        type: 'temperature',
-        room: 'Living Room',
-        value: 28.0 + (Math.random() - 0.5) * 2.5,  // 26.5-29.5°C
-        unit: 'C',
-        timestamp_iso: timestamp
-      },
-      {
-        userId,
-        id: 'sensor_temp_bedroom',
-        type: 'temperature',
-        room: 'Bedroom',
-        value: 27.8 + (Math.random() - 0.5) * 2.0,  // 26.8-28.8°C
-        unit: 'C',
-        timestamp_iso: timestamp
-      },
       // Motion (random boolean)
       {
         userId,
