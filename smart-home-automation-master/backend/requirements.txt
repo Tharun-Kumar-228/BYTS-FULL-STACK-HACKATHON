@@ -1,0 +1,11 @@
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+openai==1.6.1
+python-dotenv==1.0.0
+numpy==1.26.2
+pydantic==2.9.2
+requests==2.31.0
+pymongo
+werkzeug
+dnspython
+pyjwt

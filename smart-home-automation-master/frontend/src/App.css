@@ -1,0 +1,408 @@
+:root {
+  color-scheme: light dark;
+  --bg: #050816;
+  --panel-bg: #0b1020;
+  --accent: #4f46e5;
+  --accent-soft: rgba(79, 70, 229, 0.15);
+  --border: #1f2937;
+  --text: #f9fafb;
+  --muted: #9ca3af;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #111827 0, #020617 60%);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.app-shell {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px 20px 32px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.header-sub {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.header-controls {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-greeting {
+  font-size: 14px;
+  font-weight: 500;
+  color: #a3b8ff;
+}
+
+.logout-btn {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  transform: translateY(-1px);
+}
+
+.kpi-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.kpi-card {
+  flex: 1;
+  background: linear-gradient(135deg, #0b1020, #020617);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+}
+
+.kpi-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.kpi-value {
+  margin-top: 4px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.layout-main,
+.layout-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panel {
+  background: var(--panel-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 12px 14px 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.panel h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.devices-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.device-card {
+  border-radius: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  background: #020617;
+}
+
+.device-card.on {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft);
+}
+
+.device-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.device-type,
+.device-state {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.device-button {
+  margin-top: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.device-button:hover {
+  opacity: 0.9;
+}
+
+.command-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.command-row input {
+  flex: 1;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #020617;
+  color: var(--text);
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.command-row button {
+  border-radius: 999px;
+  border: none;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+}
+
+.command-row button:nth-child(3) {
+  background: #111827;
+}
+
+.json-box {
+  background: #020617;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  font-size: 12px;
+  max-height: 220px;
+  overflow: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  white-space: pre-wrap;
+}
+
+/* Power Consumption Stats */
+.power-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.power-stat {
+  background: #020617;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.stat-value {
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.device-power-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.device-power-item {
+  background: #020617;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 10px;
+}
+
+.device-power-item.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft);
+}
+
+.device-power-item .device-info {
+  margin-bottom: 8px;
+}
+
+.device-power-item .device-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.device-power-item .device-details {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.power-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metric .label {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.metric .value {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.progress-bar {
+  background: rgba(79, 70, 229, 0.1);
+  border-radius: 4px;
+  height: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, var(--accent), #7c3aed);
+  height: 100%;
+  border-radius: 4px;
+}
+
+/* Daily Energy Comparison */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.comparison-card {
+  background: #020617;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 12px;
+}
+
+.comparison-date {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.comparison-metric {
+  margin-bottom: 8px;
+}
+
+.comparison-metric .metric-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.comparison-metric .metric-value {
+  margin-top: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.comparison-changes {
+  background: #020617;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.comparison-changes h4 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.change-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.change-metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.change-metric .label {
+  color: var(--muted);
+}
+
+.change-metric .value {
+  font-weight: 600;
+}
+
+.change-metric.increase .value {
+  color: #10b981;
+}
+
+.change-metric.decrease .value {
+  color: #ef4444;
+}
+
+@media (max-width: 960px) {
+  .layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .power-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+}
