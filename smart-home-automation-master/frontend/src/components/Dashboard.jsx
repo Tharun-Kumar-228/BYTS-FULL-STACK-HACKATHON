@@ -25,20 +25,7 @@ export default function Dashboard() {
     const { devices, loading: devicesLoading, updateDevice } = useDevices();
 
     // Optional: if you're using this hook for deeper analytics/graphs
-    const powerAnalysis = useDevicePowerHistory(history, devices);
-
-    // Total power: prefer backend sensor, else compute from devices' rated power
-    const backendPower = sensors?.power_total_kw;
-    let computedPower = null;
-    if (!backendPower && devices?.length) {
-        computedPower = devices
-            .filter((d) => d.state?.on)
-            .reduce(
-                (sum, d) => sum + (d.metadata?.rated_power_kw || d.power_kw || 0),
-                0
-            );
-    }
-    const totalPower = backendPower ?? computedPower ?? 0;
+   
 
     // Current power capacity / stats across all devices
     const powerStats = calculateDevicePowerStats(devices || []);
