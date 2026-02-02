@@ -21,11 +21,7 @@ const simulationLoop = async (ticks = 5) => {
   const results = [];
 
   for (const { _id } of users) {
-    try {
-      await runSimulationForUser(_id, ticks);
-      results.push({ userId: _id.toString(), status: 'ok' });
-    } catch (error) {
-      console.error(`❌ Simulation error for user ${_id}:`, error.message);
+   
       results.push({ userId: _id.toString(), status: 'error', message: error.message });
     }
   }
