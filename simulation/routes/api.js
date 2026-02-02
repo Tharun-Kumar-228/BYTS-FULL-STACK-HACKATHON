@@ -170,32 +170,7 @@ router.post('/signup', async (req, res) => {
 });
 
 // POST /api/login - basic login to enable simulation
-router.post('/login', async (req, res) => {
-  const { email, password } = req.body || {};
 
-  if (!email || !password) {
-    return res.status(400).json({ success: false, error: 'missing_fields' });
-  }
-
-  try {
-    const user = await User.findOne({ email }).lean();
-    if (!user) {
-      return res.status(401).json({ success: false, error: 'invalid_credentials' });
-    }
-
-    const hashed = hashPassword(password);
-    if (user.password !== hashed) {
-      return res.status(401).json({ success: false, error: 'invalid_credentials' });
-    }
-
-    await User.updateOne({ _id: user._id }, { $set: { simulation_enabled: true } });
-
-    res.json({ success: true, userId: user._id });
-  } catch (err) {
-    console.error('Error during login:', err);
-    res.status(500).json({ success: false, error: 'login_failed', message: err.message });
-  }
-});
 
 // ------------ SIMULATION TRIGGER ------------
 
