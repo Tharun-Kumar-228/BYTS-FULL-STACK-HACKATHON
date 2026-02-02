@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const deviceSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+
   id: { type: String, required: true },
   type: { type: String, enum: ['light', 'ac', 'plug'], required: true },
   room: { type: String, required: true },

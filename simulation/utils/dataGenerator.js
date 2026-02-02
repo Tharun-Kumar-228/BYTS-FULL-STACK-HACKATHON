@@ -1,7 +1,6 @@
 const SensorData = require('../models/SensorData');
 const History = require('../models/History');
 const Device = require('../models/Device');
-
 const generateSensorData = async (userId, count = 10) => {
   const now = new Date();
   const sensorData = [];
@@ -40,6 +39,7 @@ const generateSensorData = async (userId, count = 10) => {
         unit: 'C',
         timestamp_iso: timestamp
       },
+
       // Motion (random boolean)
       {
         userId,
